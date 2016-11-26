@@ -7,6 +7,9 @@ import com.csdn.picasso.base.BaseActivity;
 import com.csdn.picasso.trans.CircleTransform;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Administrator on 2016/11/23.
  */
@@ -21,12 +24,19 @@ public class MainAcitity extends BaseActivity {
         this.loadroundimg = (ImageView) findViewById(R.id.load_round_img);
         Picasso.with(MainAcitity.this).load(img_url)
                 .transform(new CircleTransform(MainAcitity.this)).into(loadroundimg);
-
+        loadroundimg.setOnClickListener(this);
 
     }
 
     @Override
     public void widgetClick(View v) {
 
+        if (v.getId() == R.id.load_round_img) {
+
+            Map<String, Object> map = new HashMap<>();
+            map.put("ok", "我们都是中国人");
+            map.put("intel", 200);
+            startParamesActiviyt(Test.class, map);
+        }
     }
 }
